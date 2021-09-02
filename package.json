@@ -6,6 +6,8 @@
   "main": "my-element.js",
   "module": "my-element.js",
   "type": "module",
+  "author": "Mateusz Rozkosz",
+  "license": "ISC",
   "scripts": {
     "build": "echo \"This is not a TypeScript project, so no need to build.\"",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
@@ -31,11 +33,9 @@
     "javascript",
     "lit"
   ],
-  "author": "Google LLC",
-  "license": "BSD-3-Clause",
   "dependencies": {
-    "lit": "^2.0.0-rc.1",
-    "lit-element": "^3.0.0-rc.1"
+    "libphonenumber-js": "^1.9.25",
+    "lit": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",

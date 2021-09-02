@@ -3,20 +3,19 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>&lt;my-element> Demo</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/lit/polyfill-support.js"></script>
-    <script type="module" src="../my-element.js"></script>
-    <style>
-      p {
-        border: solid 1px blue;
-        padding: 8px;
-      }
-    </style>
+    <title>intl-tel Demo</title>
+
+    <script type="module" src="../src/intl-tel.js"></script>
   </head>
   <body>
-    <my-element>
-      <p>This is child content</p>
-    </my-element>
+    <intl-tel id="phone" value="+48600307428"></intl-tel>
   </body>
+
+  <script>
+    const selectElement = document.querySelector('#phone');
+
+    selectElement.addEventListener('change', (event) => {
+      console.log(event.detail);
+    });
+  </script>
 </html>
