@@ -2,37 +2,72 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "my-element",
-      "path": "./my-element.js",
-      "description": "An example element.",
+      "name": "intl-tel",
+      "path": "./src/intl-tel.js",
       "attributes": [
         {
-          "name": "name",
-          "description": "The name to say \"Hello\" to.",
+          "name": "id",
           "type": "string",
-          "default": "\"World\""
+          "default": "\"phone\""
         },
         {
-          "name": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
+          "name": "label",
+          "type": "string",
+          "default": "\"Numer telefonu\""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
+          "name": "error",
+          "type": "boolean"
         },
         {
-          "name": "count",
-          "attribute": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
+          "name": "id",
+          "attribute": "id",
+          "type": "string",
+          "default": "\"phone\""
+        },
+        {
+          "name": "change",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Numer telefonu\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "isValid",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "selectedCountry",
+          "type": "object",
+          "default": "{\"name\":\"Poland\",\"code\":\"PL\",\"codeLowCase\":\"pl\",\"dialCode\":\"+48\",\"mask\":\"999 999 999\"}"
+        },
+        {
+          "name": "phoneError",
+          "type": "object",
+          "default": "{\"error\":false,\"errorMessage\":\"\"}"
         },
         {
           "name": "renderRoot",
@@ -53,16 +88,9 @@
           "type": "Promise<boolean>"
         }
       ],
-      "slots": [
+      "events": [
         {
-          "name": "",
-          "description": "This element has a slot"
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "button",
-          "description": "The button"
+          "name": "change"
         }
       ]
     }
