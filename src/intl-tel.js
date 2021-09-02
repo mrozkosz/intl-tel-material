@@ -52,6 +52,18 @@ class IntlTel extends LitElement {
     };
   }
 
+  clear = () => {
+    this.change = false;
+    this.value = '';
+    this.selectedCountry = {
+      name: 'Poland',
+      code: 'PL',
+      codeLowCase: 'pl',
+      dialCode: '+48',
+      mask: '999 999 999',
+    };
+  };
+
   render() {
     if (this.value !== '' && !this.change) {
       this.checkPhoneNumber(this.value);
