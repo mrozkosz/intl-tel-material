@@ -27,6 +27,10 @@
     "test:watch": "npm run test -- --watch",
     "checksize": "rollup -c ; cat intl-tel.bundled.js | gzip -9 | wc -c ; rm intl-tel.bundled.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrozkosz/intl-tel-material"
+  },
   "keywords": [
     "web-components",
     "lit-element",
