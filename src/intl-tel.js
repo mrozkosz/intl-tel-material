@@ -52,7 +52,7 @@ class IntlTel extends LitElement {
     };
   }
 
-  clear = () => {
+  clear() {
     this.change = false;
     this.value = '';
     this.selectedCountry = {
@@ -62,7 +62,7 @@ class IntlTel extends LitElement {
       dialCode: '+48',
       mask: '999 999 999',
     };
-  };
+  }
 
   render() {
     if (this.value !== '' && !this.change) {

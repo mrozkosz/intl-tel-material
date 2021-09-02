@@ -84,6 +84,7 @@ export default css`
 
   .dialog {
     position: relative;
+    z-index: 9999;
   }
 
   .dialog:before {

@@ -1,7 +1,7 @@
 {
   "name": "@matthew2097/intl-tel-material",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple web component",
   "main": "./src/intl-tel.js",
   "module": "./src/intl-tel.js",
