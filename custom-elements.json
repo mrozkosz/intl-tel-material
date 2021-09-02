@@ -27,6 +27,11 @@
           "type": "boolean"
         },
         {
+          "name": "clear",
+          "type": "() => void",
+          "default": "\"() => {\\n    this.change = false;\\n    this.value = '';\\n    this.selectedCountry = {\\n      name: 'Poland',\\n      code: 'PL',\\n      codeLowCase: 'pl',\\n      dialCode: '+48',\\n      mask: '999 999 999',\\n    };\\n  }\""
+        },
+        {
           "name": "id",
           "attribute": "id",
           "type": "string",
