@@ -97,7 +97,6 @@ class IntlTel extends LitElement {
               type="tel"
               autocomplete="off"
               .value="${this.value}"
-              @focus="${(e) => {}}"
               @input=${this.changeValue}
               @blur="${() => {
                 !this.isValid ? (this.error = true) : (this.error = false);
@@ -119,8 +118,8 @@ class IntlTel extends LitElement {
       >
         <ul class="iti__country-list">
           ${countriesDialCode.map(
-            (item, index) => html`<li
-              @click="${(e) => {
+            (item) => html`<li
+              @click="${() => {
                 this.selectedCountry = item;
                 this.openDialog(true);
               }}"
@@ -163,6 +162,14 @@ class IntlTel extends LitElement {
   }
 
   async changeValue(event) {
+    const {value} = event.target;
+
+    if (value === '') {
+      this.eventCallback({value: '', isValid: false});
+
+      return;
+    }
+
     this.change = true;
     this.isOpen = false;
     const input = event.target;
@@ -209,7 +216,9 @@ class IntlTel extends LitElement {
       this.eventCallback({value: formated, isValid: isPosible && isValid});
 
       throw '';
-    } catch (error) {}
+    } catch (error) {
+      // console.error(error);
+    }
   }
 
   eventCallback(detail = {}) {

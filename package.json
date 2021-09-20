@@ -1,7 +1,7 @@
 {
   "name": "@matthew2097/intl-tel-material",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple web component",
   "main": "./src/intl-tel.js",
   "module": "./src/intl-tel.js",
@@ -22,7 +22,7 @@
     "docs:assets": "cp node_modules/prismjs/themes/prism-okaidia.css docs/",
     "docs:serve": "wds --root-dir=docs --node-resolve --watch",
     "analyze": "wca analyze \"**/*.js\" --outFile custom-elements.json",
-    "serve": "wds --watch",
+    "dev": "wds --watch",
     "test": "wtr",
     "test:watch": "npm run test -- --watch",
     "checksize": "rollup -c ; cat intl-tel.bundled.js | gzip -9 | wc -c ; rm intl-tel.bundled.js"

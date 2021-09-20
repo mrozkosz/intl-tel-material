@@ -754,7 +754,6 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
               type="tel"
               autocomplete="off"
               .value="${this.value}"
-              @focus="${d=>{}}"
               @input=${this.changeValue}
               @blur="${()=>{this.isValid?this.error=!1:this.error=!0}}"
             />
@@ -769,8 +768,8 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
         @click="${d=>this.closeModal(d)}"
       >
         <ul class="iti__country-list">
-          ${rd.map(((d,t)=>j`<li
-              @click="${t=>{this.selectedCountry=d,this.openDialog(!0)}}"
+          ${rd.map((d=>j`<li
+              @click="${()=>{this.selectedCountry=d,this.openDialog(!0)}}"
               class="iti__country ${d.code===this.selectedCountry.code?"iti__highlight":""}"
               id="iti-0__item-${d.codeLowCase}-preferred"
             >
@@ -782,4 +781,4 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
             </li>`))}
         </ul>
       </div>
-    `}openDialog(d=!1,t=null){let i;t&&(i=t.screenY);const e=this.renderRoot.querySelector("#"+this.id+"-input");this.isOpen=!this.isOpen,(this.isOpen&&i>500||!0===d)&&e.focus()}closeModal(d){"intl-tel-dialog"==d.target.id&&(this.isOpen=!1)}async changeValue(d){this.change=!0,this.isOpen=!1;const t=d.target;this.checkPhoneNumber(t.value)}checkPhoneNumber(d){let t;this.value=d;try{if("+"===d.slice(0,1)){let i=rd.find((t=>t.dialCode===d.slice(0,4)||t.dialCode===d.slice(0,3)));void 0!==i&&(this.selectedCountry=i),t=yt(d)}else t=yt(this.selectedCountry.dialCode+d);const i=t.isValid(),e=t.formatInternational(),n=function(){return ad(xt,arguments)}(t.nationalNumber,t.country);if(n&&i){this.isValid=!0,this.error=!1;const d=this.selectedCountry.dialCode.length;this.value=e.slice(d)}else this.isValid=!1;throw this.eventCallback({value:e,isValid:n&&i}),""}catch(d){}}eventCallback(d={}){let t=new CustomEvent("change",{detail:d});this.dispatchEvent(t)}});
+    `}openDialog(d=!1,t=null){let i;t&&(i=t.screenY);const e=this.renderRoot.querySelector("#"+this.id+"-input");this.isOpen=!this.isOpen,(this.isOpen&&i>500||!0===d)&&e.focus()}closeModal(d){"intl-tel-dialog"==d.target.id&&(this.isOpen=!1)}async changeValue(d){const{value:t}=d.target;if(""===t)return void this.eventCallback({value:"",isValid:!1});this.change=!0,this.isOpen=!1;const i=d.target;this.checkPhoneNumber(i.value)}checkPhoneNumber(d){let t;this.value=d;try{if("+"===d.slice(0,1)){let i=rd.find((t=>t.dialCode===d.slice(0,4)||t.dialCode===d.slice(0,3)));void 0!==i&&(this.selectedCountry=i),t=yt(d)}else t=yt(this.selectedCountry.dialCode+d);const i=t.isValid(),e=t.formatInternational(),n=function(){return ad(xt,arguments)}(t.nationalNumber,t.country);if(n&&i){this.isValid=!0,this.error=!1;const d=this.selectedCountry.dialCode.length;this.value=e.slice(d)}else this.isValid=!1;throw this.eventCallback({value:e,isValid:n&&i}),""}catch(d){}}eventCallback(d={}){let t=new CustomEvent("change",{detail:d});this.dispatchEvent(t)}});
