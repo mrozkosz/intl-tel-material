@@ -102,6 +102,17 @@ export default css`
     border-bottom: 10px solid #ededed;
   }
 
+  .dialog::after {
+    content: '';
+    position: fixed;
+    width: 100 vw;
+    height: 100 vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   .static-padding {
     padding: 11px 6px 0px 8px !important;
   }
@@ -130,15 +141,15 @@ export default css`
     .dialog {
       position: fixed;
       width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
+      height: var(--dialog-height, 100vh);
+      background-color: rgba(var(--dialog-bg-color-rgba, 0, 0, 0, 0.4));
       top: 0;
       left: 0;
       bottom: 0;
       z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
     }
 
     .iti__flag-box {
@@ -161,10 +172,11 @@ export default css`
     }
 
     .iti__country-list {
-      border-radius: 20px;
+      border-radius: var(--country-list-border-radius, 20px);
       border: 0px;
       position: fixed !important;
-      max-height: 445px;
+      max-height: var(--country-list-max-height, 445px);
+      max-width: var(--country-list-max-width, 300px);
       width: 312px;
       position: fixed !important;
       inset: 0px 0px;

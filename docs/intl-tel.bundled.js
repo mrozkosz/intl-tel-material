@@ -299,6 +299,17 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
     border-bottom: 10px solid #ededed;
   }
 
+  .dialog::after {
+    content: '';
+    position: fixed;
+    width: 100 vw;
+    height: 100 vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   .static-padding {
     padding: 11px 6px 0px 8px !important;
   }
@@ -327,15 +338,15 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
     .dialog {
       position: fixed;
       width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4);
+      height: var(--dialog-height, 100vh);
+      background-color: rgba(var(--dialog-bg-color-rgba, 0, 0, 0, 0.4));
       top: 0;
       left: 0;
       bottom: 0;
       z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
     }
 
     .iti__flag-box {
@@ -358,10 +369,11 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
     }
 
     .iti__country-list {
-      border-radius: 20px;
+      border-radius: var(--country-list-border-radius, 20px);
       border: 0px;
       position: fixed !important;
-      max-height: 445px;
+      max-height: var(--country-list-max-height, 445px);
+      max-width: var(--country-list-max-width, 300px);
       width: 312px;
       position: fixed !important;
       inset: 0px 0px;
@@ -727,7 +739,7 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
       --error-color: 180, 0, 0;
     }
   </style>
-`;customElements.define("intl-tel",class extends id{constructor(){super(),this.id="phone",this.change=!1,this.label="Numer telefonu",this.value="",this.isValid=!1,this.isOpen=!1,this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"},this.phoneError={error:!1,errorMessage:""}}static get styles(){return[ed,nd]}static get properties(){return{value:{type:String,attribute:!0},id:{type:String,attribute:!0},isOpen:{type:Boolean,attribute:!1},selectedCountry:{type:Object,attribute:!1},label:{type:String,attribute:!0},error:{type:Boolean,attribute:!1}}}clear(){this.change=!1,this.value="",this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"}}render(){return""===this.value||this.change||this.checkPhoneNumber(this.value),j`${this.phoneError.error||this.error?Ot:""}
+`;customElements.define("intl-tel",class extends id{constructor(){super(),this.id="phone",this.change=!1,this.label="Numer telefonu",this.value="",this.isValid=!1,this.isOpen=!1,this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"},this.phoneError={error:!1,errorMessage:""}}static get styles(){return[ed,nd]}static get properties(){return{value:{type:String,attribute:!0},id:{type:String,attribute:!0},isOpen:{type:Boolean,attribute:!1},selectedCountry:{type:Object,attribute:!1},label:{type:String,attribute:!0},showErrors:{type:Boolean,attribute:!0},error:{type:Boolean,attribute:!1}}}clear(){this.change=!1,this.value="",this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"}}render(){return""===this.value||this.change||this.checkPhoneNumber(this.value),j`${this.phoneError.error||this.error?Ot:""}
       <div class="iti iti--allow-dropdown">
         <div class="iti__flag-container">
           <div
@@ -761,7 +773,10 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
           </label>
           ${this.isOpen?this.renderCountryList():""}
         </div>
-      </div>`}renderCountryList(){return j`
+        ${this.phoneError.error||this.showErrors?this.renderErrorMessage():""}
+      </div>`}renderErrorMessage(){return j`<small class="error"
+      >${this.message?this.message:this.phoneError.message}</small
+    >`}renderCountryList(){return j`
       <div
         class="dialog"
         id="intl-tel-dialog"

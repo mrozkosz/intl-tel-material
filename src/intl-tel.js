@@ -48,6 +48,7 @@ class IntlTel extends LitElement {
       isOpen: {type: Boolean, attribute: false},
       selectedCountry: {type: Object, attribute: false},
       label: {type: String, attribute: true},
+      showErrors: {type: Boolean, attribute: true},
       error: {type: Boolean, attribute: false},
     };
   }
@@ -106,7 +107,16 @@ class IntlTel extends LitElement {
           </label>
           ${this.isOpen ? this.renderCountryList() : ''}
         </div>
+        ${this.phoneError.error || this.showErrors
+          ? this.renderErrorMessage()
+          : ''}
       </div>`;
+  }
+
+  renderErrorMessage() {
+    return html`<small class="error"
+      >${this.message ? this.message : this.phoneError.message}</small
+    >`;
   }
 
   renderCountryList() {
