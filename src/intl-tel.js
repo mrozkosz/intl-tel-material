@@ -24,6 +24,7 @@ class IntlTel extends LitElement {
     this.value = '';
     this.isValid = false;
     this.isOpen = false;
+    this.disabled = false;
     this.selectedCountry = {
       name: 'Poland',
       code: 'PL',
@@ -50,6 +51,7 @@ class IntlTel extends LitElement {
       label: {type: String, attribute: true},
       showErrors: {type: Boolean, attribute: true},
       error: {type: Boolean, attribute: false},
+      disabled: {type: Boolean, attribute: false},
     };
   }
 
@@ -74,7 +76,8 @@ class IntlTel extends LitElement {
       <div class="iti iti--allow-dropdown">
         <div class="iti__flag-container">
           <div
-            @click="${(e) => this.openDialog(false, e)}"
+            @click="${(e) =>
+              !this.disabled ? this.openDialog(false, e) : null}"
             class="iti__selected-flag"
             title="${this.selectedCountry.name}: ${this.selectedCountry
               .dialCode}"
@@ -102,6 +105,7 @@ class IntlTel extends LitElement {
               @blur="${() => {
                 !this.isValid ? (this.error = true) : (this.error = false);
               }}"
+              ?disabled=${this.disabled}
             />
             <span>${this.label}</span>
           </label>
