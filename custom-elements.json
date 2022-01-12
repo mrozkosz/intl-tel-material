@@ -6,6 +6,10 @@
       "path": "./src/intl-tel.js",
       "attributes": [
         {
+          "name": "showErrors",
+          "type": "boolean"
+        },
+        {
           "name": "id",
           "type": "string",
           "default": "\"phone\""
@@ -19,9 +23,19 @@
           "name": "value",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
+        {
+          "name": "showErrors",
+          "attribute": "showErrors",
+          "type": "boolean"
+        },
         {
           "name": "error",
           "type": "boolean"
@@ -56,6 +70,12 @@
         },
         {
           "name": "isOpen",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
           "type": "boolean",
           "default": "false"
         },

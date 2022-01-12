@@ -739,11 +739,11 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
       --error-color: 180, 0, 0;
     }
   </style>
-`;customElements.define("intl-tel",class extends id{constructor(){super(),this.id="phone",this.change=!1,this.label="Numer telefonu",this.value="",this.isValid=!1,this.isOpen=!1,this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"},this.phoneError={error:!1,errorMessage:""}}static get styles(){return[ed,nd]}static get properties(){return{value:{type:String,attribute:!0},id:{type:String,attribute:!0},isOpen:{type:Boolean,attribute:!1},selectedCountry:{type:Object,attribute:!1},label:{type:String,attribute:!0},showErrors:{type:Boolean,attribute:!0},error:{type:Boolean,attribute:!1}}}clear(){this.change=!1,this.value="",this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"}}render(){return""===this.value||this.change||this.checkPhoneNumber(this.value),j`${this.phoneError.error||this.error?Ot:""}
+`;customElements.define("intl-tel",class extends id{constructor(){super(),this.id="phone",this.change=!1,this.label="Numer telefonu",this.value="",this.isValid=!1,this.isOpen=!1,this.disabled=!1,this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"},this.phoneError={error:!1,errorMessage:""}}static get styles(){return[ed,nd]}static get properties(){return{value:{type:String,attribute:!0},id:{type:String,attribute:!0},isOpen:{type:Boolean,attribute:!1},selectedCountry:{type:Object,attribute:!1},label:{type:String,attribute:!0},showErrors:{type:Boolean,attribute:!0},error:{type:Boolean,attribute:!1},disabled:{type:Boolean,attribute:!0}}}clear(){this.change=!1,this.value="",this.selectedCountry={name:"Poland",code:"PL",codeLowCase:"pl",dialCode:"+48",mask:"999 999 999"}}render(){return""===this.value||this.change||this.checkPhoneNumber(this.value),j`${this.phoneError.error||this.error?Ot:""}
       <div class="iti iti--allow-dropdown">
         <div class="iti__flag-container">
           <div
-            @click="${d=>this.openDialog(!1,d)}"
+            @click="${d=>this.disabled?null:this.openDialog(!1,d)}"
             class="iti__selected-flag"
             title="${this.selectedCountry.name}: ${this.selectedCountry.dialCode}"
           >
@@ -768,6 +768,7 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
               .value="${this.value}"
               @input=${this.changeValue}
               @blur="${()=>{this.isValid?this.error=!1:this.error=!0}}"
+              ?disabled=${this.disabled}
             />
             <span>${this.label}</span>
           </label>
