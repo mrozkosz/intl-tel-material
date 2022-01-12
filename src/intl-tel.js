@@ -51,7 +51,7 @@ class IntlTel extends LitElement {
       label: {type: String, attribute: true},
       showErrors: {type: Boolean, attribute: true},
       error: {type: Boolean, attribute: false},
-      disabled: {type: Boolean, attribute: false},
+      disabled: {type: Boolean, attribute: true},
     };
   }
 
