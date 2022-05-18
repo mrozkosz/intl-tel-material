@@ -50,7 +50,7 @@ class IntlTel extends LitElement {
       selectedCountry: {type: Object, attribute: false},
       label: {type: String, attribute: true},
       showErrors: {type: Boolean, attribute: true},
-      error: {type: Boolean, attribute: false},
+      error: {type: Boolean, attribute: true},
       disabled: {type: Boolean, attribute: true},
     };
   }
